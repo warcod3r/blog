@@ -1,6 +1,6 @@
 baseURL = "https://squaredcow.dev/"
 languageCode = "en-us"
-title = "squaredcow.dev"
+title = "squaredcow"
 theme="archie"
 copyright = "© Luis Vaca"
 # Code Highlight
@@ -13,7 +13,7 @@ paginate=3 # articles per page
 [params]
 	mode="auto" # color-mode → light,dark or auto
 	useCDN=true # don't use CDNs for fonts and icons, instead serve them locally.
-	subtitle = "Luis Vaca - Development Blog"
+	subtitle = "With time you will discover that anything you spend time unraveling is worth being written"
 
 # Social Tags
 
@@ -26,6 +26,11 @@ url = "https://github.com/warcod3r"
 name = "Twitter"
 icon = "twitter"
 url = "https://twitter.com/warcod3r"
+
+[[params.social]]
+name = "LinkedIn"
+icon = "linkedin"
+url = "https://linkedin.com/in/luivaca"
 
 [[params.social]]
 name = "RSS"
@@ -53,3 +58,8 @@ weight = 3
 name = "Tags"
 url = "/tags"
 weight = 4
+
+[[menu.main]]
+name = "License"
+url = "/license"
+weight = 5
