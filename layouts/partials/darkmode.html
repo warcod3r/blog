@@ -1,0 +1,28 @@
+<script>
+    var toogle = document.getElementById("dark-mode-toggle");
+    var darkTheme = document.getElementById("dark-mode-theme");
+
+    var defaultTheme = localStorage.getItem("dark-mode-storage") || "white";
+    setTheme(defaultTheme)
+
+    toogle.addEventListener("click", () => {
+        if (toogle.className === "fas fa-moon") {
+            setTheme("dark");
+        } else if (toogle.className === "fas fa-sun") {
+            setTheme("white");
+        }
+    });
+
+    function setTheme(mode) {
+        localStorage.setItem("dark-mode-storage", mode);
+        if (mode === "dark") {
+            darkTheme.disabled = false;
+            toogle.className = "fas fa-sun";
+            toogle.text = "Light";
+        } else if (mode === "white") {
+            darkTheme.disabled = true;
+            toogle.className = "fas fa-moon";
+            toogle.text = "Dark";
+        }
+    }    
+</script>
