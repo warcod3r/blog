@@ -1,7 +1,7 @@
 baseURL = "https://squaredcow.dev/"
 languageCode = "en-us"
 title = "squaredcow"
-theme="archie"
+theme="cactus"
 copyright = "© Luis Vaca"
 # Code Highlight
 pygmentsstyle = "monokai"
