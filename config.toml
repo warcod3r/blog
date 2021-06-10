@@ -1,6 +1,6 @@
 baseURL = "https://squaredcow.dev/"
 languageCode = "en-us"
-title = "squaredcow"
+title = "squaredcow.dev"
 theme="cactus"
 copyright = "© Luis Vaca"
 # Code Highlight
@@ -13,29 +13,30 @@ paginate=3 # articles per page
 [params]
 	mode="auto" # color-mode → light,dark or auto
 	useCDN=true # don't use CDNs for fonts and icons, instead serve them locally.
-	subtitle = "With time you will discover that anything you spend time unraveling is worth being written"
+	description = "As a reader of my sorts, this is me moving towards the world writing. With time I realized that each new learning takes time from us and the way I see it, the last piece to complete the exchange is to write it down. No more drafts left unfinished! That said, dear reader: Welcome!"
+	mainSection = "posts"
 
 # Social Tags
 
 [[params.social]]
-name = "GitHub"
-icon = "github"
-url = "https://github.com/warcod3r"
+name = "email"
+link = "luis.vaca@squaredcow.dev" # no need for "mailto:" at the start
 
 [[params.social]]
-name = "Twitter"
-icon = "twitter"
-url = "https://twitter.com/warcod3r"
+name = "github"
+link = "https://github.com/warcod3r"
 
 [[params.social]]
-name = "LinkedIn"
-icon = "linkedin"
-url = "https://linkedin.com/in/luivaca"
+name = "twitter"
+link = "https://twitter.com/warcod3r"
 
 [[params.social]]
-name = "RSS"
-icon = "rss"
-url = "/index.xml"
+name = "linkedin"
+link = "https://linkedin.com/in/luivaca"
+
+[[params.social]]
+name = "rss"
+link = "/index.xml"
 
 # Main menu Items
 
@@ -50,8 +51,8 @@ url = "/posts"
 weight = 2
 
 [[menu.main]]
-name = "About"
-url = "/about"
+name = "Author"
+url = "/author"
 weight = 3
 
 [[menu.main]]
