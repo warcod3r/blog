@@ -20,7 +20,7 @@ paginate=3 # articles per page
 
 [[params.social]]
 name = "email"
-link = "luis.vaca@squaredcow.dev" # no need for "mailto:" at the start
+link = "contact@squaredcow.dev"
 
 [[params.social]]
 name = "github"
