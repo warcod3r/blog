@@ -13,7 +13,7 @@ paginate=3 # articles per page
 [params]
 	mode="auto" # color-mode → light,dark or auto
 	useCDN=true # don't use CDNs for fonts and icons, instead serve them locally.
-	description = "As a reader of my sorts, this is me moving towards the world writing. With time I realized that each new learning takes time from us and the way I see it, the last piece to complete the exchange is to write it down. No more drafts left unfinished! That said, dear reader: Welcome!"
+	description = "As a reader of my sorts, this is me moving towards the world of writing. With time I realized that each new learning takes time from us and the way I see it, the last piece to complete the exchange is to write it down. No more drafts left unfinished! That said, dear reader: Welcome!"
 	mainSection = "posts"
 
 # Social Tags
