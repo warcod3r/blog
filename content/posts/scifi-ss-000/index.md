@@ -2,6 +2,7 @@
 title: Project MRIADX-II
 date: 2021-03-04
 description: First entry of this blog
+draft: true
 ---
 
 # Before the next 90's
