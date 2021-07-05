@@ -5,9 +5,7 @@ description: Introduction to CRDTs
 draft: true
 ---
 
-# CRDTs: Conflict-free replicated data types
-
-## Initial motivations
+## Init Journey
 
 These past months I've been helping out with technical screen interviews on the job, the regular 1-hour meeting in which the candidate is given a code challenge and must provide a decent working solution by the end of it. That leaves me in a tight spot from time to time with the candidates.
 
@@ -23,15 +21,16 @@ Collaborative text web applications are asynchronous, fully powered by distribut
 
 If two users write, update or delete the same word in the document. Which change is the right one? Is it the last one? How do we handle this edit conflict? The operations are directly affected by the latency between the nodes.
 
-In an article published in 2011 by Marc Shapiro, Nuno Preguiça, Carlos Baquero, and Marek Zawirski named **"A comprehensive study of Convergent and Commutative Replicated Data Types."**[^1] they propose the design of shared data types capable of conflict-free eventual consistency.
+In an article published in 2011 by _Marc Shapiro, Nuno Preguiça, Carlos Baquero, and Marek Zawirski_ named **"A comprehensive study of Convergent and Commutative Replicated Data Types."**[^1] they propose the design of shared data types capable of conflict-free eventual consistency.
 
-Quoting the abstract of given research: 
+Quoting a fragment of the Abstract of given research: 
 
-> We call these types Convergent or Commutative Replicated Data Types(CRDTs). This paper formalizes asynchronous object replication, either state-based or operation-based, and provides a sufficient condition appropriate for each case. It describes several useful CRDTs, including container data types supporting both "add" and "remove" operations with clean semantics, and more complex types such as graphs, monotonic DAGs, and sequences. It discusses some properties needed to implement non-trivial CRDTs.
+> Eventual consistency aims to ensure that replicas of some mutable shared object converge without foreground synchronisation. Previous approaches to eventual consistency are ad-hoc and error-prone. We study a principled approach: to base the design of shared data types on some simple formal conditions that are sufficient to guarantee eventual consistency. We call these types Convergent or Commutative Replicated Data Types(CRDTs). 
 
-## The AP of CAP
+This next infografic is meant to provide you an understable glimpse of eventual consitency.
 
-![Example image](/images/excalidraws/the_ap_of_cap.png)
+![The AP of CAP](/images/excalidraws/the_ap_of_cap.png)
+Powered by Excalidraw.
 
 ## Diving into CRDTs
 
