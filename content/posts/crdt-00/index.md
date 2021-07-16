@@ -10,7 +10,7 @@ These past months I've been helping out with technical screen interviews on the 
 
 Surprisingly enough, the place I work at does not provide access to any interview platform to assess the candidate's skills, leaving me in a tight spot.  From time to time, I have to request them to open the IDE of their choice and kindly share the screen, which I found invasive and likely to reduce the formality of the process.
 
-Nowadays, there is a wide variety of paid services online such as CoderPad, CodeInterview, HackerRank, CoderByte; Just to mention a few, and all of them with robust capabilities.
+Nowadays, there is a wide variety of paid services online such as CoderPad, CodeInterview, HackerRank, CoderByte; Just to mention a few, and all of them offer robust capabilities.
 
 Similarly, on the side of free software, we have etherpad, collabedit, and Plunker. These last ones have been an experience-saver when the candidate cannot share his screen for any reason.
 
@@ -21,17 +21,18 @@ How do all these real-time collaborative text platforms operate? What is the eng
 
 ## Collaborative Text: How does it work?
 
-Collaborative text web applications are asynchronous, fully powered by distributed systems, and challenged by their complexity. Consistency in the operations executed by the users takes the primordial seat.
+Collaborative text web applications are asynchronous, fully powered by distributed systems, and challenged by their complexity. Consistency in the operations executed by the users takes the primary seat, while they are directly affected by the latency between the nodes.
 
-If two users write, update or delete the same word in the document. Which change is the right one? Is it the last one? IS it the first one? How do we handle this edit conflict? The operations are directly affected by the latency between the nodes.
+
+If two users write, update or delete the same word in the document. Which change is the right one? Is it the last one? Is it the first one? How do we handle this edit conflict? 
 
 In an article published in 2011 by _Marc Shapiro, Nuno Preguiça, Carlos Baquero, and Marek Zawirski_ named **"A comprehensive study of Convergent and Commutative Replicated Data Types."**[^1] they propose the design of shared data types capable of conflict-free eventual consistency.
 
-Quoting a fragment of the Abstract of given research: 
+Quoting: 
 
-> Eventual consistency aims to ensure that replicas of some mutable shared object converge without foreground synchronisation. Previous approaches to eventual consistency are ad-hoc and error-prone. We study a principled approach: to base the design of shared data types on some simple formal conditions that are sufficient to guarantee eventual consistency. We call these types Convergent or Commutative Replicated Data Types(CRDTs). 
+> Eventual consistency aims to ensure that replicas of some mutable shared object converge without foreground synchronisation. Previous approaches to eventual consistency are ad-hoc and error-prone. We study a principled approach: to base the design of shared data types on some simple formal conditions that are sufficient to guarantee eventual consistency. We call these types Convergent or Commutative Replicated Data Types (CRDTs). 
 
-This next infografic is meant to provide you an understable glimpse of eventual consitency.
+This next infographic is meant to provide you an understable glimpse of eventual consitency.
 
 ![The AP of CAP](/images/excalidraws/the_ap_of_cap.png)
 Powered by Excalidraw.
