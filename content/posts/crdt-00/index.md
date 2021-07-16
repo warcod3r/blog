@@ -54,9 +54,9 @@ We propose the concept of a convergent or commutative replicated data type (CRDT
 
 A data-structure designed for distributed computing meant to be used in distributed storages and multi-user applications.
 
-# Building basic CRDTs
+## Building basic CRDTs
 
-## Counters 
+### Counters 
 
 The most basic of the CRDTs, a primitive that lives within the replicas exposing a set of basic operations:
 
@@ -70,42 +70,72 @@ The value must converge towards the global number of increments minus the number
 
 G-Counter is a state-based CRDT or CvRDT.
 
-``` java
-pacakge com.expediagroup.*;
+``` java {linenos=table,hl_lines=[8],linenostart=1}
+package com.squaredcow.crdts;
 
-public class GCounter<Integer> implements Counter { 
-   
-    private Integer[] 
-    payload integer[n] P
-    initial [0,0,...,0]
+import lombok.Data;
+
+import java.util.Arrays;
+
+@Data
+public final class GCounter implements Counter<Integer> {
+
+    private Integer registryId;
+    private Integer registrySize;
+    private Integer[] innerRegistry;
+
+    public GCounter(Integer registryId, Integer registrySize) {
+        this.registryId = registryId;
+        this.registrySize = registrySize;
+        this.innerRegistry =  new Integer[registrySize];
+    }
 
     @Override
-    public void increment() {
-      Integer g = myId()
-      P[g] := P[g] + 1
+    public GCounter init() {
+        Arrays.fill(this.innerRegistry, 0);
+        return this;
+    }
+
+    @Override
+    public GCounter increment() {
+        Integer id = this.registryId;
+        System.out.println("Increasing by 1 G-Counter for id=" + id);
+        this.innerRegistry[id] = this.innerRegistry[id] + 1;
+        return this;
     }
 
 
     @Override
     public Integer value() {
         Integer result = 0;
-        for(Integer counter : clusterCounters) {
+        for(Integer counter : innerRegistry) {
             result += counter;
         }
         return result;
     }
-    
-    @Override
-    public boolean compare (X, Y) {
-        let b = (∀i ∈ [0, n - 1] : X.P[i] ≤ Y.P[i])
+
+    public Boolean compare(GCounter x, GCounter y) {
+        for(Integer n : x.getInnerRegistry()) {
+            if(x.getInnerRegistry()[n] <= y.getInnerRegistry()[n]) {
+                return true;
+            }
+        }
+        return false;
     }
-    
-    public merge (X, Y) : payload Z
-    let ∀i ∈ [0, n - 1] : Z.P[i] = max(X.P[i], Y.P[i])
+
+    public Integer[] merge(GCounter x, GCounter y) {
+        Integer[] mergedRegistry = new Integer[registrySize];
+        for(int i = 0; i < x.getInnerRegistry().length; i ++) {
+            Integer vx = x.getInnerRegistry()[i];
+            Integer vy = y.getInnerRegistry()[i];
+            mergedRegistry[i] = Math.max(vx, vy);
+        }
+        return mergedRegistry;
+    }
 }
 ```
 
-## Registries
+### Registries
 
 A register is a memory cell storing an opaque atom or object (noted type X here after). 
 
@@ -119,5 +149,9 @@ Unless safeguards are taken, concurrent updates do not commute; two major approa
 - Last-Writer-Wins Registry  or LWW-Register that one takes precedence over the other 
 - Multi-Value Register or MV-Register that both are retained 
 
+
+## EOF 
+
+Time for wrap-up ...
 
 [^1]: Paper: https://hal.inria.fr/inria-00555588/document

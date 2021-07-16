@@ -4,7 +4,8 @@ title = "squaredcow.dev"
 theme="cactus"
 copyright = "© Luis Vaca"
 # Code Highlight
-pygmentsstyle = "monokai"
+# Good one: tango, xcode
+pygmentsstyle = "tango" 
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
