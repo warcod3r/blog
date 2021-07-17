@@ -35,7 +35,7 @@ Quoting:
 This next infographic is meant to provide you an understable glimpse of eventual consitency.
 
 ![The AP of CAP](/images/excalidraws/the_ap_of_cap.png)
-Powered by Excalidraw.
+a). The AP of CAP
 
 ## Diving into CRDTs
 
@@ -78,12 +78,12 @@ To provide a more thorough view of one the counters mentioned above, we picked G
 G-Counter is a state-based CRDT or CvRDT for positive increments only. As mentioned above it exposes a set of basic operations: *init, increment, value, merge and compare.*
 
 ![G-COunter OPs 1](/images/excalidraws/g-counter-ops-pt1.png)
-#### G-Counter OPS: init, increment and value.
+b). G-Counter OPS: init, increment and value.
 
 ![G-COunter OPs 2](/images/excalidraws/g-counter-ops-pt2.png)
-#### G-Counter OPS: merge and compare.
+c). G-Counter OPS: merge and compare.
 
-To further visualize a GCounter, we can easily create a class named `GCounter` that implements each of the methods explained above.
+To further visualize a GCounter, we can easily create a class named `GCounter` that operates with *integers* and implements each of the methods explained above.
 
 ``` java {linenos=table,linenostart=1}
 package com.squaredcow.crdts;
@@ -114,11 +114,9 @@ public final class GCounter implements Counter<Integer> {
     @Override
     public GCounter increment() {
         Integer id = this.registryId;
-        System.out.println("Increasing by 1 G-Counter for id=" + id);
         this.innerRegistry[id] = this.innerRegistry[id] + 1;
         return this;
     }
-
 
     @Override
     public Integer value() {
@@ -149,6 +147,7 @@ public final class GCounter implements Counter<Integer> {
     }
 }
 ```
+d). GCounter implementation in Java
 
 ##  Next steps
 
