@@ -61,17 +61,31 @@ A data-structure designed for distributed computing meant to be used in distribu
 
 The most basic of the CRDTs, a primitive that lives within the replicas exposing a set of basic operations:
 
-- **increment/decrement** the value of the counter.
-- **update** the value of the counter.
-- **query** the value of the counter.
+- **Increment/decrement** the value of the counter.
+- **Update** the value of the counter.
+- **Query** the value of the counter.
 
-The value must converge towards the global number of increments minus the number of decrements. 
+The value of the primitive must converge towards the global number of increments minus the number of decrements. These are some of the defined CRDTs counters [^1]:
+
+- Grow-only Counter (G-Counter):  state-based counter for positive increments only.
+- Positive-Negative Counter (PN-Counter): state-based counter with a double registry for positive and negative increments.
+- Non-negative Counter: similar to PN-Counter with the restriction of not beign able to generate more decrements than the current originated increments.
+
+To provide a more thorough view of one the counters mentioned above, we picked G-Counter to further explain its operations.
 
 ### Grow-only Counter (G-Counter)
 
-G-Counter is a state-based CRDT or CvRDT.
+G-Counter is a state-based CRDT or CvRDT for positive increments only. As mentioned above it exposes a set of basic operations: *init, increment, value, merge and compare.*
 
-``` java {linenos=table,hl_lines=[8],linenostart=1}
+![G-COunter OPs 1](/images/excalidraws/g-counter-ops-pt1.png)
+#### G-Counter OPS: init, increment and value.
+
+![G-COunter OPs 2](/images/excalidraws/g-counter-ops-pt2.png)
+#### G-Counter OPS: merge and compare.
+
+To further visualize a GCounter, we can easily create a class named `GCounter` that implements each of the methods explained above.
+
+``` java {linenos=table,linenostart=1}
 package com.squaredcow.crdts;
 
 import lombok.Data;
@@ -136,23 +150,12 @@ public final class GCounter implements Counter<Integer> {
 }
 ```
 
-### Registries
+##  Next steps
 
-A register is a memory cell storing an opaque atom or object (noted type X here after). 
+This is an initial dive into the CRDTs structures themselves, we will eventually go deeper to construct a cluster of replicas that operate with them. We still need to go first through the rest of the structures mentioned, such as: *registers, sets and graphs*, but let's have those on a second entry on this blog series.
 
-That supports to primary operations:
-- assign: to update the registry value.
-- value: to query the registry.
+With nothing left to add, thank you for reading all the way through, until next entry.
 
-Non-concurrent assigns preserve sequential semantics: the later one overwrites the earlier one. 
-
-Unless safeguards are taken, concurrent updates do not commute; two major approaches are:
-- Last-Writer-Wins Registry  or LWW-Register that one takes precedence over the other 
-- Multi-Value Register or MV-Register that both are retained 
-
-
-## EOF 
-
-Time for wrap-up ...
+-- squaredcow
 
 [^1]: Paper: https://hal.inria.fr/inria-00555588/document
